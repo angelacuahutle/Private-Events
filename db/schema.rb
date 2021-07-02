@@ -22,8 +22,11 @@ ActiveRecord::Schema.define(version: 2021_06_29_221743) do
   end
 
   create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.bigint "creator_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["creator_id"], name: "index_events_on_creator_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,4 +41,5 @@ ActiveRecord::Schema.define(version: 2021_06_29_221743) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "users", column: "creator_id"
 end

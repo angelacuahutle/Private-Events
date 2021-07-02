@@ -1,3 +1,5 @@
 class Appointment < ApplicationRecord
-  @Appointment: belongs_to_
+  belongs_to :user
+  belongs_to :event
 end
+
