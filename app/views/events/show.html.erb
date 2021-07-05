@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+<% @events.each do | event | %>
+ <%= event.title %> 
+<% end %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

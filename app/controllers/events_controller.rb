@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :log_in_url
   before_action :set_event, only: %i[ show edit update destroy ]
 
   # GET /events or /events.json
@@ -17,19 +18,18 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @event = current_user.events.find(params[:id])
   end
 
   # POST /events or /events.json
   def create
-    @event = Event.new(event_params)
-
+    @event = current_user.created_events.build(event_params)
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: "Event was successfully created." }
         format.json { render :show, status: :created, location: @event }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+        redirect_to root_path
       end
     end
   end
@@ -49,11 +49,14 @@ class EventsController < ApplicationController
 
   # DELETE /events/1 or /events/1.json
   def destroy
-    @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: "Event was successfully destroyed." }
-      format.json { head :no_content }
+    @event = current_user.events.find(params[:id])
+    if @event
+      @event.destroy
+      flash[:success] = 'Event successfully deleted'
+    else
+      flash[:alert] = 'Seems like there is an error somewhere'
     end
+    redirect_to root_path
   end
 
   private
