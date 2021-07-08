@@ -18,12 +18,14 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = current_user.events.find(params[:id])
+    @current_user = current_user
+    @event = @current_user.events.find(params[:id])
   end
 
   # POST /events or /events.json
   def create
-    @event = current_user.created_events.build(event_params)
+    @current_user = current_user
+    @event = @current_user.events.build(event_params)
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: "Event was successfully created." }
