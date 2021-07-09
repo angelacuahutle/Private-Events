@@ -1,3 +1,8 @@
 <%= content_tag :h2, @event.title %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+
+<% # content_tag :h2, 'These are the users coming to this event!' %>
+<% # @event.attendees.each do |attendee| %>
+  <% #= attendee.email is coming! %>
+<% # end %>
