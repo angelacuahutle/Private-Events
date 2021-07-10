@@ -24,7 +24,7 @@ A rails Private-Events project
 Run `rails db:migrate` and make sure the commande succeded
 #### Test all in the browser
 - Run `$ rails server`
-- In the browser go to http://localhost:3000/sign
+- In the browser go to http://localhost:3000/sign_in
 - This page should display :arrow_down:
 - ![screenshot]()
 - Create a new user by putting informations inside the text fields
