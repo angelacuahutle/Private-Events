@@ -1,36 +1,65 @@
-# README
+# Private-Events
+A rails Private-Events project
+> The main goal of this project was to put in practice the main concepts of Associations in rails. Mainly, given the main character (the user), the events and invitations can be created with the user in mind; the user can attend an event, can create an event, can delete, etc. Find it at https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/associations
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## Built With
+- RUBY
+- Ruby On Rails
+- Visual Code
+## GET STARTED
+#### Requirements
+- At least one code editor installed (VS Code for example)
+- Git installed
+- Ruby installed
+- At least one web browser
+#### Clone the repository
+- Click on the "code" button above on this page and copy the link to the repository
+- Run `git@github.com:angelacuahutle/private-events.git`
+- Go to the cloned repository run `cd private-events`
+#### Installe required Gem
+- In the terminale, run `bundle install`
+- [optional] Run `bundle update`
+#### Set up the database tables
+Run `rails db:migrate` and make sure the commande succeded
+#### Test all in the browser
+- Run `$ rails server`
+- In the browser go to http://localhost:3000/sign
+- This page should display :arrow_down:
+- ![screenshot]()
+- Create a new user by putting informations inside the text fields
+#### Test the tables
+- First run `rails c`
+- In the rails console make sure all the tables are working correctly. Run `User`
+- Then look at all User to make sure that information used to create the user account was pushed successfully to the database.
+1. `user = User`
+2. `pp user.all` shows details of all the users
+## :handshake: Contributing
+Contributions, issues and feature requests are welcome!
+## Author 1
 
-* Ruby version
+👤 **Angela Natalia Cuahutle**
 
-* System dependencies
+- GitHub: [@angelacuahutle](https://github.com/angelacuahutle/)
+- Twitter: [@AngelaCunaDev](https://twitter.com/AngelaCunaDev)
+- LinkedIn: [https://www.linkedin.com/in/angela-cuahutle-75228bab/](https://www.linkedin.com/in/angela-cuahutle-75228bab/)
 
-* Configuration
+## 🤝 Contributing
 
-* Database creation
+Contributions, issues, and feature requests are welcome!
 
-* Database initialization
+Feel free to check the [issues page](https://github.com/RailonA/private-events/issues).
 
-* How to run the test suite
+## Acknowledgments
 
-* Services (job queues, cache servers, search engines, etc.)
+-  ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-* Deployment instructions
 
-* ...
+## Show your support
 
-# Event Attendance
-Add the association between the event attendee (also a User) and the event. Call this user the “attendee”. Call the event the “attended_event”. You’ll again need to juggle specially named foreign keys and classes and sources.
+Give a ⭐️ if you like this project!
 
-Create and migrate all necessary tables and foreign keys. This will require a “through” table since an Event can have many Attendees and a single User (Attendee) can attend many Events… many-to-many.
-Create a Controller and corresponding routes for the “through” table that will allow a user to become an “attendee” of an event.
+## 📝 License
 
-Update the Event’s Show page to display a list of attendees.
+This project is MIT licensed.
 
-Add to the User’s Show page a list of their “attended_events”.
-
-Separate this list of “attended_events” into either events that have occurred in the past or events that will occur in the future. You’ll get some good practice building queries and working with dates. Keep this logic in the view and do not put separate method calls in the controller.
