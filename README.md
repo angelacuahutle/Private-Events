@@ -24,7 +24,7 @@ A rails Private-Events project
 Run `rails db:migrate` and make sure the commande succeded
 #### Test all in the browser
 - Run `$ rails server`
-- In the browser go to http://localhost:3000/sign_in
+- In the browser go to http://127.0.0.1:3000/users/sign_in
 - This page should display :arrow_down:
 - ![screenshot]()
 - Create a new user by putting informations inside the text fields
@@ -48,7 +48,7 @@ Contributions, issues and feature requests are welcome!
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/RailonA/private-events/issues).
+Feel free to check the [issues page](https://github.com/angelacuahutle/private-events/issues).
 
 ## Acknowledgments
 
