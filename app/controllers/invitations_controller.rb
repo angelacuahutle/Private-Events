@@ -5,6 +5,6 @@ class InvitationsController < ApplicationController
     @event = Event.find(params[:event_id]) 
     @invitation = @event.invitations.new(user_id: @user.id)
     @invitation.save
-    redirect_to event_path(@event.id)
+    redirect_to event_path(@event.event_id)
   end
 end
