@@ -1,33 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-
   <h1>All Events!</h1>
 
-    <% @events.all.each do |event| %>
-        <h5 class=''><%= link_to event.title%></h5>
-        <%= link_to  "Show", event %>
+  <% @events.all.each do |event| %>
+    <div class="card col-3 m-2 p-4">
+      <h5 class=''><%= link_to event.title, event %></h5>
+      <h6 class="text-muted"><%= event.creator.email %></h6>
+      <div class="d-flex justify-content-between">
+        <%= link_to 'Show', event %>
+      </div>
+    </div>
+  <% end %>
+
+  <h5>Don't miss your incoming events!</h5>
+   <tbody>
+    <% @upcoming_invitations.each do |invitation| %>
+      <div class='container'>
+        <div class="row justify-content-center">
+          <div class="card col-3 m-2 p-4" style="">
+            <h5 class=""><%= invitation.event.title %></h5>
+            <h6 class="text-muted"><%= current_user.email %></h6>
+            <div class='d-flex justify-content-between'>
+              <%= link_to  "Show", invitation.event %>
+            </div>  
+          </div>
         </div>
       </div>
     <% end %>
-  </div>
-
-  <tbody>
-    <% @upcoming_invitations.each do |invitation| %>
-      <tr>
-        <td><%= invitation.event.title %></td>
-      </tr>
-    <% end %>
   </tbody>
 
+  <h5>PAST EVENTS</h5>
+  <h5>A recap on all those good meetings you have had.</h5>  
     <tbody>
-    <% @past_invitations.each do |invitation| %>
-      <tr>
-        <td><%= invitation.event.title %></td>
-      </tr>
+      <% @past_invitations.each do |invitation| %>
+        <div class='container'>
+          <div class="row justify-content-center">
+               <div class="card col-3 m-2 p-4" style="">
+                <h5 class=""><%= invitation.event.title %></h5>
+                  <h6 class="text-muted"><%= current_user.email %></h6>
+                  <div class='d-flex justify-content-between'>
+                <%= link_to  "Show", invitation.event %>
+              </div>
+            </div>
+         </div>
+      </div>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
 <%= link_to 'New Event', new_event_path %>
