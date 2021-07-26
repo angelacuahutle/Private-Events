@@ -15,24 +15,26 @@ class EventsController < ApplicationController
   def new
     @event = current_user.created_events.new
   end
-  
+
   # GET /events/1/edit
   def edit; end
-  
+
   # POST /events or /events.json
   def create
     @event = current_user.created_events.build
-    
+
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
-        endevent = current_user.created_events.new
+        end
+        event = current_user.created_events.new
       end
     end
-  end 
-    # PATCH/PUT /events/1 or /events/1.json
+  end
+
+  # PATCH/PUT /events/1 or /events/1.json
   def update
     respond_to do |format|
       if @event.update(event_params)
@@ -42,7 +44,7 @@ class EventsController < ApplicationController
       end
     end
   end
-  
+
   # DELETE /events/1 or /events/1.json
   def destroy
     @event.destroy
@@ -51,13 +53,14 @@ class EventsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_event
     @event = Event.find(params[:id])
   end
-  
+
   # Only allow a list of trusted parameters through.
   def event_params
     params.fetch(:event, {}).permit(:title)
