@@ -1,7 +1,13 @@
+<div class="controls">
 <%= content_tag :h2, @event.title %>
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', event_path %>
-
+<%= link_to 'Edit', edit_event_path(@event), class:'button is-primary' %> |
+<%= link_to 'Back', event_path, class:'button is-primary' %>
+</div>
+<div class="single-event-page box box-radius">
+  <div >
+    <p>
+      <strong>Title: </strong>
+    </p>  
 <%= render "invitations/invitation_form" %>
 <%= content_tag :h2, 'These are the users coming to this event!' %>
 <% @event.attendees.each do |attendee| %>

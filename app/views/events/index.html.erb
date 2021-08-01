@@ -2,16 +2,19 @@
 
   <h1>All Events!</h1>
 
-  <% @events.all.each do |event| %>
-    <div class="card col-3 m-2 p-4">
-      <h5 class=''><%= link_to event.title, event %></h5>
-      <h6 class="text-muted"><%= event.creator.email %></h6>
-      <div class="d-flex justify-content-between">
-        <%= link_to 'Show', event %>
+  <div class='d-flex'>
+    <% @events.each do |event| %>
+      <div class="card col-3 m-2 p-4">
+        <h5 class=''><%= link_to event.title, event %></h5>
+        <h6 class="text-muted"><%= event.creator.email %></h6>
+        <div class="d-flex justify-content-between">
+          <%= link_to 'Show', event.title %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 
+  <h2>UPCOMING EVENTS</h2>
   <h5>Don't miss your incoming events!</h5>
    <tbody>
     <% @upcoming_invitations.each do |invitation| %>
@@ -21,7 +24,7 @@
             <h5 class=""><%= invitation.event.title %></h5>
             <h6 class="text-muted"><%= current_user.email %></h6>
             <div class='d-flex justify-content-between'>
-              <%= link_to  "Show", invitation.event %>
+              <%= link_to  "Show", invitation.event.to_come %>
             </div>  
           </div>
         </div>
@@ -29,22 +32,22 @@
     <% end %>
   </tbody>
 
-  <h5>PAST EVENTS</h5>
+  <h2>PAST EVENTS</h2>
   <h5>A recap on all those good meetings you have had.</h5>  
     <tbody>
       <% @past_invitations.each do |invitation| %>
         <div class='container'>
           <div class="row justify-content-center">
-               <div class="card col-3 m-2 p-4" style="">
-                <h5 class=""><%= invitation.event.title %></h5>
-                  <h6 class="text-muted"><%= current_user.email %></h6>
-                  <div class='d-flex justify-content-between'>
-                <%= link_to  "Show", invitation.event %>
+            <div class="card col-3 m-2 p-4" style="">
+              <h5 class=""><%= invitation.event.title %></h5>
+              <h6 class="text-muted"><%= current_user.email %></h6>
+              <div class='d-flex justify-content-between'>
+                <%= link_to  "Show", invitation.event.past_invitations %>
               </div>
             </div>
-         </div>
-      </div>
-    <% end %>
+          </div>
+        </div>
+      <% end %>
   </tbody>
 </table>
 <br>

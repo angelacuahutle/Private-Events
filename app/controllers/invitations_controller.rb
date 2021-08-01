@@ -4,6 +4,11 @@ class InvitationsController < ApplicationController
     @event = Event.find(params[:event_id])
     @invitation = @event.invitations.new(user_id: @user.id)
     @invitation.save
-    redirect_to event_path(@event.event_id)
+  end
+
+  private
+
+  def invitation_params
+    params.fetch(:invitation, {}).permit(:date, :user_id, :event_id)
   end
 end
