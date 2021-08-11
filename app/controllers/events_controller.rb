@@ -1,42 +1,34 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
 
-  # GET /events or /events.json
   def index
     @events = Event.all
     @upcoming_invitations = Invitation.all.to_come
     @past_invitations = Invitation.all.before_today
   end
 
-  # GET /events/1 or /events/1.json
   def show
     @event = Event.find(params[:id])
     @attendees = @event.attendees
-    # @current_inv = current_user.invitations.find_by(attended_event_id: @event.id)
   end
 
-  # GET /events/new
   def new
     @event = current_user.created_events.new
   end
 
-  # GET /events/1/edit
   def edit; end
 
-  # POST /events or /events.json
   def create
-    @event = current_user.created_events.invitations.build(event_params)
+    @event = current_user.created_events.build(event_params)
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
-      @event = current_user.created_events.new
     end
   end
 
-  # PATCH/PUT /events/1 or /events/1.json
   def update
     respond_to do |format|
       if @event.update(event_params)
@@ -58,12 +50,10 @@ class EventsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_event
     @event = Event.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def event_params
     params.fetch(:event, {}).permit(:title, :description)
   end

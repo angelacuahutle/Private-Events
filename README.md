@@ -34,6 +34,8 @@ Run `rails db:migrate` and make sure the commande succeded
 - Then look at all User to make sure that information used to create the user account was pushed successfully to the database.
 1. `user = User`
 2. `pp user.all` shows details of all the users
+3.  Add Webpacker to the GEMFILE and Run `Bundle install
+4. In order to add style settings to the project install Bootsrap
 ## :handshake: Contributing
 Contributions, issues and feature requests are welcome!
 ## Author 1
