@@ -31,16 +31,16 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Handles authentication
 gem 'devise'
 
-# create test data 
-gem 'faker', '~> 2.18' 
+# create test data
+gem 'faker', '~> 2.18'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'better_errors', '~> 2.9', '>= 2.9.1'
+  gem 'binding_of_caller', '~> 1.0.0'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry', '~> 0.14.1'
   gem 'rubocop', '>= 1.0', '< 2.0'
-  gem 'binding_of_caller', '~> 1.0.0'
 end
 
 group :development do

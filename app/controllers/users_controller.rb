@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  
   def idex
     @user = User.all
   end
@@ -11,12 +10,12 @@ class UsersController < ApplicationController
   end
 
   def new
-  @user = User.new
+    @user = User.new
   end
 
   def edit; end
 
-  private 
+  private
 
   def set_user
     @user = User.find(params[:email])
