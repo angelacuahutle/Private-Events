@@ -1,0 +1,8 @@
+<% current_user.created_events.each do |event| %>
+  <%= event.title %><br>
+<% end %>
+
+<% # content_tag :h2, 'These are your attended events!' %>
+<% # current_user.attended_events.each do |at_event| %>
+  <% #= at_event.title on at_event.invitation.date %>
+<% # end %>

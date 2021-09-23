@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'New Event', new_event_path %>
+<h1>All Events!</h1>
+<div class='d-flex flex-wrap'>
+  <% @events.each do |event| %>
+    <div class="card col-3 m-2 p-4">
+      <h5 class=''><%= event.title %></h5>
+      <h6 class="text-muted"><%= event.creator.email %></h6>
+      <div class="d-flex justify-content-between">
+        <%= link_to 'Show', event_path(event.id) %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<h2>UPCOMING EVENTS</h2>
+<h5>Don't miss your incoming events!</h5>
+<div class='d-flex flex-wrap'>
+  <% @upcoming_invitations.each do |invitation| %>
+    <div class="card col-3 m-2 p-4" style="">
+      <h5 class=""><%= invitation.event.title %></h5>
+      <h6 class="text-muted"><%= current_user.email %></h6>
+      <div class='d-flex justify-content-between'>
+        <%= link_to  "Show", event_path(invitation.event.id) %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<h2>PAST EVENTS</h2>
+<h5>A recap on all those good meetings you have had.</h5>
+<div class='d-flex flex-wrap'>
+  <% @past_invitations.each do |invitation| %>
+    <div class="card col-3 m-2 p-4" style="">
+      <h5 class=""><%= invitation.event.title %></h5>
+      <h6 class="text-muted"><%= current_user.email %></h6>
+      <div class='d-flex justify-content-between'>
+        <%= link_to  "Show", event_path(invitation.event.id) %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<br>
